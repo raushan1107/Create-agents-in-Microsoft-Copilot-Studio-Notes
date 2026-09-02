@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raushan and the Rise of the MS Learn Companion — PL-7008 Handbook | by Raushan</title>
+<style>
+  :root{
+    --bg:#F5F6FA;
+    --surface:#FFFFFF;
+    --ink:#1B1E2B;
+    --ink-soft:#565C74;
+    --primary:#4338CA;
+    --primary-deep:#312589;
+    --primary-soft:#EEF0FE;
+    --accent:#F59E0B;
+    --accent-soft:#FFF6E5;
+    --line:#E2E4EE;
+    --ms-blue:#0F6CBD;
+    --ms-blue-soft:#E7F1FC;
+    --code-accent:#8B8FF7;
+    --tip-green:#0F7A45;
+    --tip-green-soft:#E7F6EC;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.7;font-size:16px;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',system-ui,sans-serif;letter-spacing:-0.01em;}
+  a{color:var(--primary);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible{outline:2px solid var(--primary);outline-offset:2px;}
+
+  .topbar{
+    background:var(--ink);color:#fff;padding:10px 24px;
+    display:flex;align-items:center;justify-content:space-between;font-size:13.5px;
+  }
+  .topbar .brand{display:flex;align-items:center;gap:8px;font-weight:600;color:#fff;}
+  .topbar .mark{
+    width:22px;height:22px;border-radius:6px;
+    background:linear-gradient(135deg,var(--primary),var(--code-accent));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;color:#fff;
+  }
+  .topbar a{color:#C9CBFF;}
+
+  header.hero{max-width:820px;margin:0 auto;padding:56px 24px 30px;}
+  .eyebrow-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .pill{font-size:12.5px;padding:5px 12px;border-radius:100px;background:var(--primary-soft);color:var(--primary-deep);font-weight:600;border:1px solid #DEE0FB;}
+  .pill.amber{background:var(--accent-soft);color:#92620A;border-color:#F5DFAE;}
+  .pill.blue{background:var(--ms-blue-soft);color:var(--ms-blue);border-color:#C7E0F4;}
+  h1.title{font-size:clamp(28px,4.4vw,42px);line-height:1.14;margin:0 0 14px;max-width:20ch;}
+  p.lede{font-size:18px;color:var(--ink-soft);max-width:64ch;margin:0 0 20px;}
+  .byline{font-size:14.5px;color:var(--ink-soft);}
+  .byline strong{color:var(--ink);}
+
+  main{max-width:820px;margin:0 auto;padding:0 24px 100px;}
+
+  .notice{
+    background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:10px;padding:18px 20px;margin:0 0 20px;font-size:14.5px;color:var(--ink-soft);
+  }
+  .notice strong{color:var(--ink);}
+
+  .toc{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:22px 24px;margin:0 0 52px;
+  }
+  .toc h3{margin:0 0 12px;font-size:16px;}
+  .toc ol{margin:0;padding-left:20px;}
+  .toc li{margin-bottom:7px;font-size:14.5px;}
+  .toc a{color:var(--ink);font-weight:500;}
+  .toc a:hover{color:var(--primary);}
+  .toc .module-line{color:var(--ink-soft);font-size:13px;margin:14px 0 4px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
+
+  .module-divider{margin:64px 0 30px;padding-top:6px;}
+  .module-divider .modtag{
+    display:inline-block;font-family:'Space Grotesk',sans-serif;
+    font-size:12.5px;font-weight:700;color:#fff;background:var(--ink);
+    padding:5px 12px;border-radius:6px;margin-bottom:10px;
+  }
+  .module-divider h2{font-size:24px;margin:0 0 8px;}
+  .module-divider p{color:var(--ink-soft);font-size:14.5px;margin:0 0 10px;max-width:60ch;}
+  .module-divider .ms-line{font-size:13.5px;}
+  .module-divider .ms-line a{color:var(--ms-blue);font-weight:600;}
+  .module-divider hr{border:none;border-top:2px solid var(--ink);margin:16px 0 0;}
+
+  .chapter{margin:0 0 40px;scroll-margin-top:24px;}
+  .chapter h3.ctitle{font-size:19.5px;margin:0 0 12px;display:flex;align-items:baseline;gap:10px;}
+  .chapter h3.ctitle .chnum{
+    font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;
+    color:var(--primary-deep);background:var(--primary-soft);border-radius:100px;padding:3px 10px;flex-shrink:0;
+  }
+  .chapter p{margin:0 0 14px;color:var(--ink);font-size:15.5px;}
+  .chapter p.opening{font-style:italic;color:var(--ink-soft);border-left:3px solid var(--line);padding-left:14px;}
+  .chapter ul{margin:0 0 14px;padding-left:20px;}
+  .chapter li{margin-bottom:5px;color:var(--ink);font-size:15px;}
+
+  .concept-tag{
+    display:inline-flex;align-items:center;gap:6px;background:var(--primary-soft);color:var(--primary-deep);
+    border:1px solid #DEE0FB;border-radius:100px;padding:4px 12px;font-size:12.5px;font-weight:600;margin:4px 8px 14px 0;
+  }
+
+  .tip-box, .challenge-box, .ms-callout{
+    border-radius:10px;padding:14px 16px;margin:0 0 16px;font-size:14.5px;
+  }
+  .tip-box{background:var(--tip-green-soft);border:1px solid #BFE4CC;color:#0B5C34;}
+  .tip-box .lbl{font-weight:700;display:block;margin-bottom:4px;}
+  .challenge-box{background:var(--accent-soft);border:1px solid #F5DFAE;color:#7A5205;}
+  .challenge-box .lbl{font-weight:700;display:block;margin-bottom:4px;}
+  .ms-callout{background:var(--ms-blue-soft);border:1px solid #C7E0F4;color:#0B4A80;}
+  .ms-callout .lbl{font-weight:700;display:block;margin-bottom:4px;color:var(--ms-blue);}
+  .ms-callout a{color:var(--ms-blue);font-weight:600;}
+  .ms-callout ul{margin:6px 0 0;padding-left:18px;}
+  .ms-callout li{margin-bottom:4px;color:#0B4A80;}
+
+  .helpme-inline{
+    background:#12142B;color:#E9E9F5;border-left:3px solid var(--accent);border-radius:8px;
+    padding:12px 14px;margin:0 0 16px;font-family:'JetBrains Mono',Consolas,monospace;
+    font-size:13px;line-height:1.55;white-space:pre-wrap;
+  }
+  .helpme-inline::before{
+    content:"💬 Help Me prompt Raushan used";display:block;font-family:'Space Grotesk',sans-serif;
+    font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.02em;
+  }
+
+  .final-chapter{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:32px 30px;margin:56px 0 0;}
+  .final-chapter h2{font-size:24px;margin:0 0 14px;}
+
+  footer{border-top:1px solid var(--line);padding:36px 24px 60px;max-width:820px;margin:0 auto;color:var(--ink-soft);font-size:14px;}
+  footer .foot-brand{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ink);margin-bottom:8px;}
+  footer a{color:var(--primary-deep);}
+  footer .ownership{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-top:16px;font-size:13.5px;}
+
+  @media (max-width:600px){
+    .module-divider h2{font-size:20px;}
+    .chapter h3.ctitle{font-size:17px;flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="mark">R</span> Raushan</div>
+</div>
+
+<header class="hero">
+  <div class="eyebrow-row">
+    <span class="pill">PL-7008 · Copilot Studio</span>
+    <span class="pill blue">Points to learn.microsoft.com</span>
+    <span class="pill amber">Story Handbook</span>
+  </div>
+  <h1 class="title">Raushan and the Rise of the MS Learn Companion</h1>
+  <p class="lede">A storytelling handbook for PL-7008 — Create and extend custom copilots in Microsoft Copilot Studio. This time, the agent Raushan builds isn't a recommender for his own content — it's a companion that checks every answer directly against the official <a href="https://learn.microsoft.com" target="_blank" rel="noopener">learn.microsoft.com</a> platform, the same discipline he already uses to keep his own tools accurate.</p>
+  <p class="byline">Written &amp; narrated by <strong>Raushan Ranjan</strong> · Microsoft Certified Trainer</p>
+</header>
+
+<main>
+
+  <div class="toc">
+    <h3>The story so far</h3>
+    <div class="module-line">Prologue</div>
+    <ol start="0">
+      <li><a href="#ch1">Chapter 1 — The Quest Begins</a></li>
+    </ol>
+    <div class="module-line">Module 1 — Get started with Copilot Studio</div>
+    <ol>
+      <li><a href="#ch2">Chapter 2 — Giving Birth to an Agent</a></li>
+      <li><a href="#ch3">Chapter 3 — Teaching the Bot to Think</a></li>
+    </ol>
+    <div class="module-line">Module 2 — Manage topics in Microsoft Copilot Studio</div>
+    <ol>
+      <li><a href="#ch4">Chapter 4 — Let's Talk Topics</a></li>
+      <li><a href="#ch5">Chapter 5 — Smart Conversations with Conditions &amp; Cards</a></li>
+      <li><a href="#ch6">Chapter 6 — Making the Bot Learn: NLU &amp; Training</a></li>
+    </ol>
+    <div class="module-line">Module 3 — Work with entities and variables</div>
+    <ol>
+      <li><a href="#ch7">Chapter 7 — Knowing More: Variables and Entities</a></li>
+    </ol>
+    <div class="module-line">Module 4 — Enhance Microsoft Copilot Studio agents</div>
+    <ol>
+      <li><a href="#ch8">Chapter 8 — Automation: Checking Against the Real Source</a></li>
+    </ol>
+    <div class="module-line">Module 5 — Create an agent with Copilot Studio &amp; Dataverse for Teams</div>
+    <ol>
+      <li><a href="#ch9">Chapter 9 — Testing the Bot Like a Pro</a></li>
+      <li><a href="#ch10">Chapter 10 — Time to Shine: Deployment</a></li>
+    </ol>
+    <div class="module-line">Epilogue</div>
+    <ol>
+      <li><a href="#ch11">Final Chapter — Legacy of a Maker</a></li>
+    </ol>
+  </div>
+
+  <!-- PROLOGUE -->
+  <section class="chapter" id="ch1">
+    <h3 class="ctitle"><span class="chnum">Ch 1</span>The Quest Begins — "Is That Still the Current Module?"</h3>
+    <p class="opening">Raushan had just told a batch that a particular Applied Skills credential was the way to certify PL-7008 skills — and a student messaged an hour later: "Sir, it says 'retired' on the page." Raushan checked. It was.</p>
+    <p>He realized his notes, his memory, even his own last-year screenshots could go stale — but Microsoft Learn itself never lies about its own current state. "I don't need to remember every module name and URL," he told himself. "I need a companion that always checks the source for me."</p>
+    <p>Before touching the tool, he reminded himself what Power Platform actually is: Copilot Studio for building the agent, Power Automate for the "doing" part, Dataverse as the table where the agent's index lives. Nothing to install — just a browser and a plan.</p>
+    <div class="challenge-box"><span class="lbl">🎯 Challenge</span>Think of a fact you routinely repeat from memory in your own work or study. How would you build a habit — or a tool — that checks it against the live source instead?</div>
+  </section>
+
+  <!-- MODULE 1 -->
+  <div class="module-divider">
+    <span class="modtag">Module 1</span>
+    <h2>Get started with Copilot Studio</h2>
+    <p>How Raushan gave the agent its identity, then taught it to think in terms of the official Microsoft Learn platform.</p>
+    <p class="ms-line">📘 Go deeper: <a href="https://learn.microsoft.com/en-us/training/modules/power-virtual-agents-create-online-workshop" target="_blank" rel="noopener">Create your first agent in Microsoft Copilot Studio</a> · <a href="https://learn.microsoft.com/en-us/training/modules/generate-ai-powered-responses-generative-answers-copilot-studio/" target="_blank" rel="noopener">Generative answers module</a></p>
+    <hr>
+  </div>
+
+  <section class="chapter" id="ch2">
+    <h3 class="ctitle"><span class="chnum">Ch 2</span>Giving Birth to an Agent</h3>
+    <p>Raushan opens Copilot Studio and selects <strong>Create</strong>.</p>
+    <p>🧠 "Let's call it the PL-7008 MS Learn Companion," he decided.</p>
+    <p>🛠️ He sets:</p>
+    <ul>
+      <li><strong>Name:</strong> PL-7008 MS Learn Companion</li>
+      <li><strong>Description:</strong> Helps learners quickly find and verify the current official Microsoft Learn content for PL-7008 — modules, learning paths, docs, and credentials</li>
+      <li><strong>Instructions:</strong> Only answer using content that traces back to a real learn.microsoft.com page. Always name the page and link it. If nothing on Learn matches, say so — never guess.</li>
+    </ul>
+    <div class="helpme-inline">Create an agent called PL-7008 MS Learn Companion that helps learners find and verify current Microsoft Copilot Studio training content directly on learn.microsoft.com — modules, learning paths, product docs, and credentials. The agent should always cite the specific Microsoft Learn page it used, and should say clearly when it can't find a matching page rather than guessing.</div>
+    <p>📌 This is where Raushan defines the <strong>agent fundamentals</strong> — and, importantly, a ground rule: this agent's job is to point outward to the real platform, never to answer from its own assumptions.</p>
+    <div class="concept-tag">Concept: Agent identity, description, instructions</div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <h3 class="ctitle"><span class="chnum">Ch 3</span>Teaching the Bot to Think</h3>
+    <p>"A companion that checks the source is only as good as the index it checks against," Raushan reminded himself.</p>
+    <p>He enables:</p>
+    <ul>
+      <li>✅ <strong>Generative AI</strong> — so it can answer open-ended questions</li>
+      <li>✅ <strong>Knowledge source</strong> — a "PL-7008 MS Learn Reference" doc Raushan maintains: the real learning-path and module URLs for Copilot Studio, kept current, each with a one-line description</li>
+    </ul>
+    <p>🧪 <strong>Demo try:</strong> Raushan typed in the test panel — "Which module covers entities and variables?" The Companion answered with the actual module title and a direct <a href="https://learn.microsoft.com/en-us/training/modules/power-virtual-agents-entities/" target="_blank" rel="noopener">learn.microsoft.com link</a>, pulled straight from the reference doc.</p>
+    <div class="tip-box"><span class="lbl">💡 Tip</span>Generative AI lets the agent answer questions even when no topic has been built for them. A well-maintained knowledge source is what keeps every one of those answers traceable back to a real Microsoft Learn page instead of a plausible-sounding guess.</div>
+  </section>
+
+  <!-- MODULE 2 -->
+  <div class="module-divider">
+    <span class="modtag">Module 2</span>
+    <h2>Manage topics in Microsoft Copilot Studio</h2>
+    <p>How Raushan structured the "check this for me" conversation, branched it, and taught the agent more ways people ask the same thing.</p>
+    <p class="ms-line">📘 Go deeper: <a href="https://learn.microsoft.com/en-us/training/modules/copilot-studio-topics/" target="_blank" rel="noopener">Design agent conversations using topics</a> · <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-create-edit-topics" target="_blank" rel="noopener">Create and edit topics (docs)</a></p>
+    <hr>
+  </div>
+
+  <section class="chapter" id="ch4">
+    <h3 class="ctitle"><span class="chnum">Ch 4</span>Let's Talk Topics</h3>
+    <p>With the knowledge source in place, Raushan structures the one conversation that needs a safety net: what happens when the Companion genuinely can't find a match.</p>
+    <p>Raushan realized: "If it can't verify something, it should say so and hand off — never bluff." Topics are where he builds that guardrail.</p>
+    <p>💬 He learns: a <strong>Topic = Trigger + Flow</strong> (questions, responses, actions), and there are system topics too, like Greeting and Fallback.</p>
+    <p>🛠️ He creates a topic: "Ask Raushan directly" —</p>
+    <ul>
+      <li>Trigger phrases: "I don't think that's right", "can you double-check that", "that page doesn't exist"</li>
+      <li>A question node collects what the learner was trying to verify</li>
+      <li>A message node responds honestly, confirming it will be checked and corrected</li>
+    </ul>
+    <div class="helpme-inline">Create a topic called "Ask Raushan directly" that triggers when a learner says things like "I don't think that's right", "can you double-check that", or "that page doesn't exist". The topic should ask what they were trying to verify, then show a message confirming it will be reviewed and the reference doc corrected if needed.</div>
+    <p>📌 Raushan now understands topic design, trigger phrases, and flow control — applied to something that matters more than convenience: not being wrong with confidence.</p>
+    <div class="concept-tag">Concept: Topics, triggers, question &amp; message nodes</div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <h3 class="ctitle"><span class="chnum">Ch 5</span>Smart Conversations with Conditions &amp; Cards</h3>
+    <p>Building on the basic topic, Raushan wants the Companion to handle a real lookup request cleanly.</p>
+    <p>"What if someone asks for a 'Module' but really means a whole 'Learning Path'? The right answer looks different each time."</p>
+    <p>He builds "Find it on MS Learn" and adds a condition node:</p>
+    <ul>
+      <li>If the resource type doesn't match a known value → ask again instead of failing silently</li>
+      <li>If it matches → move on to the lookup</li>
+    </ul>
+    <p>Then he formats the response as a citation-style card: the page title, its type (Module / Learning Path / Doc / Credential), and the live learn.microsoft.com link — never just a bare chat sentence.</p>
+    <div class="helpme-inline">Edit the "Find it on MS Learn" topic to add a condition: if the learner doesn't provide a valid resource type from the ResourceType entity, ask them to choose from the list again instead of failing silently. Show matching results as a card with the page title, resource type, and the learn.microsoft.com link.</div>
+    <p>📌 He learns about condition nodes, and how presenting an answer as a citation — not just prose — is what makes "check the source" actually mean something.</p>
+    <div class="challenge-box"><span class="lbl">🎯 Challenge</span>How would you use a condition node in a bot that helps students tell the difference between a Microsoft Certification and a Microsoft Applied Skill?</div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <h3 class="ctitle"><span class="chnum">Ch 6</span>Making the Bot Learn: NLU &amp; Training</h3>
+    <p>"People won't all phrase a fact-check the same way," Raushan realized.</p>
+    <p>He improves trigger phrases and trains the Companion:</p>
+    <ul>
+      <li>Adds variants like "check this on MS Learn", "is there an official module for this", "verify against Microsoft Learn"</li>
+      <li>Sets priority so "Find it on MS Learn" wins over the generic FAQ answer when a learner clearly wants a citation</li>
+      <li>Uses debug mode to see exactly which topic fired and why</li>
+    </ul>
+    <div class="tip-box"><span class="lbl">💡 Tip</span>Debug mode is the fastest way to find out why a topic didn't trigger — it shows you the recognized intent, not just the final answer.</div>
+    <div class="challenge-box"><span class="lbl">🎯 Challenge</span>Why is it worth adding several trigger phrase variants instead of just one "perfect" phrase?</div>
+  </section>
+
+  <!-- MODULE 3 -->
+  <div class="module-divider">
+    <span class="modtag">Module 3</span>
+    <h2>Work with entities and variables</h2>
+    <p>How Raushan taught the agent to recognize specific Microsoft Learn resource types and topic areas, and remember them across a conversation.</p>
+    <p class="ms-line">📘 Go deeper: <a href="https://learn.microsoft.com/en-us/training/modules/power-virtual-agents-entities/" target="_blank" rel="noopener">Work with entities and variables in Microsoft Copilot Studio</a></p>
+    <hr>
+  </div>
+
+  <section class="chapter" id="ch7">
+    <h3 class="ctitle"><span class="chnum">Ch 7</span>Knowing More: Variables and Entities</h3>
+    <p>To make the Companion genuinely useful, Raushan needs it to recognize exactly what kind of Microsoft Learn resource someone is after.</p>
+    <p>He:</p>
+    <ul>
+      <li>Creates a custom entity: <strong>LearnTopicArea</strong> (Agent Fundamentals, Topics, Entities &amp; Variables, Automation, Autonomous Agents, Publishing) — mirroring PL-7008's own module structure</li>
+      <li>Creates a second custom entity: <strong>ResourceType</strong> (Learning Path, Module, Product Doc, Applied Skills, Credential)</li>
+      <li>Stores captured values in variables like <code>learnTopicArea</code> and <code>resourceType</code></li>
+    </ul>
+    <div class="helpme-inline">Create a custom entity called LearnTopicArea that recognizes Agent Fundamentals, Topics, Entities and Variables, Automation, Autonomous Agents, and Publishing, matching the module structure of PL-7008. Then create a second entity called ResourceType that recognizes Learning Path, Module, Product Doc, Applied Skills, and Credential.</div>
+    <p>🧠 "Now my Companion can pin down exactly what someone needs before it goes looking," Raushan smiled.</p>
+    <div class="challenge-box"><span class="lbl">🎯 Challenge</span>What's the difference between an entity and a variable in Copilot Studio? Try explaining it in one sentence, the way you'd explain it to a new student.</div>
+  </section>
+
+  <!-- MODULE 4 -->
+  <div class="module-divider">
+    <span class="modtag">Module 4</span>
+    <h2>Enhance Microsoft Copilot Studio agents</h2>
+    <p>How Raushan gave the agent the ability to actually check something, not just describe it.</p>
+    <p class="ms-line">📘 Go deeper: <a href="https://learn.microsoft.com/en-us/training/paths/automate-tasks-workflows-copilot-studio/" target="_blank" rel="noopener">Automate tasks and workflows in Microsoft Copilot Studio</a> · <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/add-tools-custom-agent" target="_blank" rel="noopener">Add tools to custom agents (docs)</a></p>
+    <hr>
+  </div>
+
+  <section class="chapter" id="ch8">
+    <h3 class="ctitle"><span class="chnum">Ch 8</span>Automation: Checking Against the Real Source</h3>
+    <p>Having set up understanding and memory, Raushan now wants the agent to perform the actual check, not just describe how it would.</p>
+    <p>"It's time for the Companion to look something up for real."</p>
+    <p>Raushan builds an agent flow / Power Automate tool that:</p>
+    <ul>
+      <li>Takes the captured LearnTopicArea and ResourceType</li>
+      <li>Queries an <code>MS Learn Resource Index</code> Dataverse table Raushan maintains — Title, ResourceType, LearnTopicArea, URL, LastVerified — each row a real learn.microsoft.com page</li>
+      <li>Returns up to three matching resources with their live links and the date Raushan last verified them</li>
+    </ul>
+    <p>He connects this into his topic using a <strong>Call an Action</strong> node.</p>
+    <div class="helpme-inline">Add a tool that looks up official Microsoft Learn resources in the MS Learn Resource Index table, matching a given topic area and resource type, and returns up to three matching titles with their learn.microsoft.com links and last-verified dates.</div>
+    <p>📌 Now the Companion doesn't just describe Microsoft Learn from memory — it checks a maintained, real index and hands back a live citation, exactly the discipline Raushan already applies when he verifies his own tools before publishing them.</p>
+    <div class="tip-box"><span class="lbl">💡 Tip</span>Keeping a maintained index table (rather than trying to scrape Learn pages live) is the practical pattern here — it's the same idea as checking your own skill descriptions before you publish them: someone still has to keep the source of truth honest.</div>
+  </section>
+
+  <!-- MODULE 5 -->
+  <div class="module-divider">
+    <span class="modtag">Module 5</span>
+    <h2>Create an agent with Copilot Studio &amp; Dataverse for Teams</h2>
+    <p>How Raushan proved the Companion actually works, then put it in front of real students.</p>
+    <p class="ms-line">📘 Go deeper: <a href="https://learn.microsoft.com/en-us/training/paths/create-extend-custom-copilots-microsoft-copilot-studio/" target="_blank" rel="noopener">Create agents in Microsoft Copilot Studio — learning path</a> · <a href="https://learn.microsoft.com/en-us/training/modules/autonomous-agents-online-workshop/email-trigger" target="_blank" rel="noopener">Make your agent autonomous</a></p>
+    <hr>
+  </div>
+
+  <section class="chapter" id="ch9">
+    <h3 class="ctitle"><span class="chnum">Ch 9</span>Testing the Bot Like a Pro</h3>
+    <p>Before trusting it in front of a batch, Raushan needs to know the Companion is actually accurate.</p>
+    <p>He opens the Test panel and:</p>
+    <ul>
+      <li>Simulates several different learner questions</li>
+      <li>Enables track topics, to watch which one fires and why</li>
+      <li>Checks captured variable values after each question</li>
+      <li>Deliberately tests edge cases — an unclear resource type, a topic area with no indexed match, an outdated URL</li>
+    </ul>
+    <div class="challenge-box"><span class="lbl">🎯 Challenge</span>What edge cases would you test for in a bot that checks whether a certification or credential is still active on Microsoft Learn?</div>
+  </section>
+
+  <section class="chapter" id="ch10">
+    <h3 class="ctitle"><span class="chnum">Ch 10</span>Time to Shine: Deployment</h3>
+    <p>With a thoroughly tested Companion, Raushan is ready to share it.</p>
+    <p>🛠️ He:</p>
+    <ul>
+      <li>Selects <strong>Publish</strong></li>
+      <li>Generates a demo website link for quick sharing</li>
+      <li>Deploys the agent to Microsoft Teams so students can ask it mid-class</li>
+      <li>As a stretch capability, adds an Outlook trigger so the Companion can reply to a "Check on MS Learn" email autonomously — no live chat needed</li>
+    </ul>
+    <p>🎉 Students now get an answer that always traces back to a real learn.microsoft.com page — any hour, no need to trust anyone's memory, including Raushan's own.</p>
+    <div class="tip-box"><span class="lbl">💡 Tip</span>Testing in the Test panel and testing a published, live trigger are genuinely different — always publish before you expect a real-world trigger (like an incoming email) to fire.</div>
+  </section>
+
+  <div class="final-chapter" id="ch11">
+    <h2>Final Chapter — Legacy of a Maker</h2>
+    <p>Raushan reflects: "It started with one embarrassing moment — telling a student about a credential that had already been retired. Now I've built a habit, and a tool, that checks the real source every time."</p>
+    <p>He starts mentoring his own PL-7008 students on:</p>
+    <ul>
+      <li>Building agents with Copilot Studio, one module at a time</li>
+      <li>Treating learn.microsoft.com as the source of truth, the same way they'd treat any authoritative reference — and building tools that check it rather than trusting memory</li>
+      <li>Using generative AI responsibly, with real citations and honest "I don't know, let me check" instructions</li>
+    </ul>
+    <div class="ms-callout">
+      <span class="lbl">📘 Keep checking the source</span>
+      Start here whenever you want to verify something yourself, the same way the Companion does:
+      <ul>
+        <li><a href="https://learn.microsoft.com/en-us/training/paths/create-extend-custom-copilots-microsoft-copilot-studio/" target="_blank" rel="noopener">Create agents in Microsoft Copilot Studio — learning path</a></li>
+        <li><a href="https://learn.microsoft.com/microsoft-copilot-studio" target="_blank" rel="noopener">Microsoft Copilot Studio documentation home</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/credentials/applied-skills/resources/study-guides/apl-7008" target="_blank" rel="noopener">APL-7008 study guide (check current status before relying on it)</a></li>
+      </ul>
+    </div>
+    <p>Continue the journey in the companion <a href="hands-on-guide.html"><strong>Hands-On Build Guide</strong></a> — every chapter above has an exact click path waiting there.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="foot-brand"><span class="mark" style="width:20px;height:20px;background:linear-gradient(135deg,var(--primary),var(--code-accent));border-radius:5px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:10px;">R</span> Raushan</div>
+  <p>See the companion <a href="hands-on-guide.html">PL-7008 Hands-On Build Guide</a> for exact click-by-click steps.</p>
+  <div class="ownership">
+    This handbook is written and personally maintained by <strong>Raushan Ranjan</strong>, Microsoft Certified Trainer. It follows the storytelling style of my earlier post, <a href="https://microsoftcopilotlearning.blogspot.com/2025/05/understand-agent-creation-using-copilot-studio-end-to-end.html" target="_blank" rel="noopener">"Raushan and the Rise of the Smart Agent"</a>. These are independent training notes, not official Microsoft courseware — the agent described here, and every reference in this handbook, points back to <a href="https://learn.microsoft.com/en-us/training/paths/create-extend-custom-copilots-microsoft-copilot-studio/" target="_blank" rel="noopener">learn.microsoft.com</a> as the actual source of truth.
+  </div>
+</footer>
+
+</body>
+</html>
